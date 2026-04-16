@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bondex Packaging | Reliable Packaging Solutions</title>
+    <style>
+        /* --- Reset & Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        :root {
+            --primary: #1e3a5f; /* Deep Navy Blue from logo */
+            --primary-dark: #142841;
+            --accent: #c5a059; /* Gold from logo */
+            --accent-dark: #a6864a;
+            --dark: #121212; /* Matte Black */
+            --light: #f4f4f4;
+            --white: #ffffff;
+            --gray: #7a7a7a;
+            --border: #dddddd;
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 74, 153, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        .logo-box img {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .nav-container {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background-color: var(--white);
+            padding: 6px;
+            border-radius: 100px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+
+        .nav-links li {
+            display: flex;
+        }
+
+        .nav-links a {
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--dark);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--light);
+        }
+
+        .nav-links a.active {
+            background-color: rgba(197, 160, 89, 0.2); /* Light gold tint */
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            display: none; /* Remove the old underline effect */
+        }
+
+        .badge {
+            display: none !important;
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background-color: var(--white);
+            padding: 6px;
+            border-radius: 100px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            z-index: 1001;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .social-links a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary); /* Theme color */
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: rgba(30, 58, 95, 0.05); /* Subtle navy tint */
+            color: var(--accent); /* Gold on hover */
+            transform: translateY(-2px);
+        }
+
+        .hamburger-box {
+            display: none;
+        }
+
+        .hamburger {
+            display: flex;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        /* --- Hero Section --- */
+        #home {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Align to left */
+            text-align: left; /* Align text left */
+            padding: 0;
+            overflow: hidden;
+            max-width: none;
+            background-color: var(--white); /* Fallback to white, not transparent/black */
+            background-image: url('bg2.jpg');
+            background-size: cover;
+            background-position: center;
+            transition: background-image 1s ease-in-out;
+        }
+
+        .hero-overlay {
+            display: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: #2d2d2d; /* Matte Modern Black */
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 80px;
+        }
+
+        .hero-content .top-text {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 600; /* Modern, not too bold */
+            margin-bottom: 0;
+            line-height: 1.1;
+        }
+
+        .hero-content h1 span {
+            color: var(--accent);
+        }
+
+        .hero-content .sub-text {
+            font-size: 2.5rem;
+            font-weight: 600; /* Modern, not too bold */
+            margin-top: 0;
+            margin-bottom: 40px;
+            display: block;
+            line-height: 1.1;
+        }
+
+        .btn-quote {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.03);
+            backdrop-filter: blur(10px);
+            padding: 6px;
+            border-radius: 100px;
+            font-weight: 600;
+            color: var(--primary); /* Arrow color */
+            transition: var(--transition);
+            gap: 15px;
+            padding-right: 25px;
+            text-decoration: none;
+            margin-top: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .btn-quote .text-pill {
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 14px 40px;
+            border-radius: 100px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 1.1rem;
+            display: block;
+        }
+
+        .btn-quote .arrow {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-quote:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        /* --- About Section --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-placeholder {
+            width: 100%;
+            aspect-ratio: 3/2;
+            background-color: var(--light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: bold;
+            border: 2px dashed var(--border);
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        .vision-box {
+            background-color: var(--light);
+            padding: 30px;
+            border-left: 5px solid var(--accent);
+            margin-top: 30px;
+        }
+
+        .vision-box h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- Products Section --- */
+        #products {
+            background-color: var(--light);
+            max-width: none;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            text-align: center;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .product-card.expanded {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            border-color: var(--primary);
+            z-index: 10;
+        }
+
+        .product-img-box {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .product-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img-box img {
+            transform: scale(1.1);
+        }
+
+        .btn-get-started {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .product-card:hover .btn-get-started,
+        .product-card.expanded .btn-get-started {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* --- Category Overlay --- */
+        .category-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            z-index: 4000;
+            display: none;
+            overflow-y: auto;
+            padding: 100px 20px 50px;
+        }
+
+        .category-overlay.active {
+            display: block;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-item {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .category-item:hover {
+            background-color: var(--white);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transform: translateY(-5px);
+        }
+
+        .category-item img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .category-item h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .product-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .product-features {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .product-features li {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .product-features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* --- Features Section --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .feature-box {
+            background-color: var(--white);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background-color: var(--white);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            color: var(--primary);
+        }
+
+        .feature-box:hover .feature-icon-wrapper {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: rotate(5deg);
+        }
+
+        .feature-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            line-height: 1.3;
+        }
+
+        .feature-box p {
+            font-size: 0.95rem;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* --- Industries Section --- */
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .industry-item {
+            padding: 30px;
+            background-color: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .industry-item:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* --- Services Section --- */
+        #services {
+            background-color: var(--dark);
+            color: var(--white);
+            max-width: none;
+        }
+
+        #services .section-title h2 {
+            color: var(--white);
+        }
+
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        /* --- Reviews Section --- */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            padding: 30px;
+            background-color: var(--light);
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .review-author {
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 15px;
+        }
+
+        /* --- Contact Section --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            background-color: #fcfcfc;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+
+        .info-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            width: 45px;
+            height: 45px;
+            background-color: var(--white);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .info-content p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-top: 4px;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-left: 5px;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            padding: 15px 20px;
+            border: 1px solid transparent;
+            background-color: #f3f4f6;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            background-color: var(--white);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(30, 58, 95, 0.1);
+            outline: none;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: none;
+        }
+
+        .btn-submit-container {
+            grid-column: span 2;
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .btn-submit {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            background-color: var(--primary);
+        }
+
+        .btn-submit .arrow-circle {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-maps {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background-color: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .btn-maps:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .whatsapp-direct {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: #25D366;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            transition: opacity 0.3s ease;
+        }
+
+        .whatsapp-direct:hover {
+            opacity: 0.8;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 20px 20px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-about h2 span {
+            color: var(--accent);
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+
+        /* --- Responsive Styles --- */
+        @media (max-width: 992px) {
+            .hero-content h1 { font-size: 2.8rem; }
+            .about-grid, .contact-grid, .features-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                width: 100%;
+                top: 15px;
+                left: 0;
+                transform: none;
+            }
+
+            .nav-wrapper {
+                width: 95%;
+                margin: 0 auto;
+                justify-content: space-between;
+                padding: 0;
+                background-color: transparent;
+                backdrop-filter: none;
+                box-shadow: none;
+                border: none;
+            }
+
+            .logo-box {
+                order: 3;
+            }
+
+            .social-links {
+                display: none; /* Hide social links on mobile to keep it clean */
+            }
+
+            .hamburger-box {
+                display: flex;
+                order: 1;
+                background-color: transparent;
+                padding: 5px;
+                border-radius: 8px;
+                box-shadow: none;
+                z-index: 1001;
+            }
+
+            .nav-container {
+                display: none;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 90px;
+                left: 50%;
+                transform: translateX(-50%) scale(0.9);
+                width: 90%;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: stretch;
+                padding: 20px;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                opacity: 0;
+                visibility: hidden;
+                transition: 0.3s;
+                z-index: 999;
+                gap: 10px;
+            }
+
+            .nav-links.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateX(-50%) scale(1);
+            }
+
+            .nav-links a {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .hamburger {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                margin-right: 0;
+                cursor: pointer;
+            }
+
+            .hamburger span {
+                display: block;
+                width: 28px;
+                height: 2px;
+                background-color: var(--primary);
+                transition: var(--transition);
+                border-radius: 2px;
+            }
+
+            .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+
+            .hero-content {
+                padding: 120px 30px 80px;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+            .hero-content .top-text {
+                font-size: 1rem;
+                margin-bottom: 5px;
+            }
+            .hero-content h1, .hero-content .sub-text {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            .btn-quote {
+                margin-top: auto;
+                transform: scale(0.85);
+                transform-origin: left center;
+            }
+            #home {
+                background-image: url('phone-bg-1.jpg');
+                background-position: center;
+                background-size: cover;
+                transition: background-image 1s ease-in-out;
+            }
+            .section-title h2 { font-size: 2rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+        }
+        /* --- Loading Screen --- */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        #loader video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        body.loading {
+            overflow: hidden;
+        }
+        /* --- Mega Menu --- */
+        .mega-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            overflow-y: auto;
+            padding: 100px 50px 50px;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            transform: translateY(-30px);
+        }
+
+        .mega-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .mega-menu-close {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--primary);
+            z-index: 2001;
+        }
+
+        .mega-menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mega-menu-category h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .mega-menu-category ul {
+            list-style: none;
+        }
+
+        .mega-menu-category ul li {
+            margin-bottom: 10px;
+        }
+
+        .mega-menu-category ul li a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .mega-menu-category ul li a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        /* --- Product Detail Overlay --- */
+        .product-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            z-index: 3000;
+            display: none;
+            overflow-y: auto;
+            padding: 80px 20px 50px;
+        }
+
+        .product-overlay.active {
+            display: block;
+        }
+
+        .product-overlay-close {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--primary);
+            z-index: 3001;
+        }
+
+        .product-detail-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .product-detail-image {
+            background-color: #f9f9f9;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .product-detail-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .product-detail-info h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .product-detail-info .price-tag {
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 30px;
+            display: inline-block;
+            background: rgba(184, 134, 11, 0.1);
+            padding: 5px 15px;
+            border-radius: 5px;
+        }
+
+        .product-detail-info p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        @media (max-width: 768px) {
+            .product-detail-container {
+                grid-template-columns: 1fr;
+            }
+            .product-detail-info h2 {
+                font-size: 2rem;
+            }
+            .mega-menu {
+                padding: 80px 20px 50px;
+            }
+        }
+    </style>
+</head>
+<body class="loading">
+    <!-- Loading Screen -->
+    <div id="loader">
+        <video autoplay muted playsinline id="loader-vid">
+            <source src="bvid.mp4" type="video/mp4">
+        </video>
+        <audio id="loader-audio" autoplay>
+            <source src="logom.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <nav id="navbar">
+        <div class="nav-wrapper">
+            <div class="logo-box">
+                <img src="logo.png" alt="Bondex Logo">
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="javascript:void(0)" id="products-trigger">Products</a></li>
+                <li><a href="#industries">Industries</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="social-links">
+                <a href="https://wa.me/919023971274" target="_blank" title="WhatsApp">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </a>
+                <a href="#" title="Instagram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                </a>
+                <a href="#" title="LinkedIn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+            </div>
+            <div class="hamburger-box">
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mega Menu -->
+    <div class="mega-menu" id="mega-menu">
+        <div class="mega-menu-close" id="mega-menu-close">&times;</div>
+        <div class="mega-menu-grid">
+            <div class="mega-menu-category">
+                <h3>BOPP Tapes</h3>
+                <ul>
+                    <li><a class="product-link" data-name="BOPP Logo Tapes">BOPP Logo Tapes</a></li>
+                    <li><a class="product-link" data-name="BOPP Decoration Tape">BOPP Decoration Tape</a></li>
+                    <li><a class="product-link" data-name="BOPP Warning Tape">BOPP Warning Tape</a></li>
+                    <li><a class="product-link" data-name="BOPP Coloured Tapes">BOPP Coloured Tapes</a></li>
+                    <li><a class="product-link" data-name="BOPP Plain Tapes">BOPP Plain Tapes</a></li>
+                    <li><a class="product-link" data-name="BOPP Jumbo Tape Rolls">BOPP Jumbo Tape Rolls</a></li>
+                </ul>
+            </div>
+            <div class="mega-menu-category">
+                <h3>PP STRAPS</h3>
+                <ul>
+                    <li><a class="product-link" data-name="Printed PP Straps">Printed PP Straps</a></li>
+                    <li><a class="product-link" data-name="Coloured PP Straps">Coloured PP Straps</a></li>
+                    <li><a class="product-link" data-name="Machine Grade PP Straps">Machine Grade PP Straps</a></li>
+                    <li><a class="product-link" data-name="Hand Grade PP Straps">Hand Grade PP Straps</a></li>
+                </ul>
+                <h3 style="margin-top: 30px;">PET STRAPS</h3>
+                <ul>
+                    <li><a class="product-link" data-name="Printed PET Straps">Printed PET Straps</a></li>
+                    <li><a class="product-link" data-name="Coloured PET Straps">Coloured PET Straps</a></li>
+                    <li><a class="product-link" data-name="Machine Grade PET Straps">Machine Grade PET Straps</a></li>
+                    <li><a class="product-link" data-name="Hand Grade PET Straps">Hand Grade PET Straps</a></li>
+                    <li><a class="product-link" data-name="Cotton Baling PET Straps">Cotton Baling PET Straps</a></li>
+                    <li><a class="product-link" data-name="Jumbo PET Strap Rolls">Jumbo PET Strap Rolls</a></li>
+                </ul>
+            </div>
+            <div class="mega-menu-category">
+                <h3>STRETCH FILMS</h3>
+                <ul>
+                    <li><a class="product-link" data-name="Printed Stretch Films">Printed Stretch Films</a></li>
+                    <li><a class="product-link" data-name="Coloured Stretch Films">Coloured Stretch Films</a></li>
+                    <li><a class="product-link" data-name="Machine Grade Stretch Films">Machine Grade Stretch Films</a></li>
+                    <li><a class="product-link" data-name="Hand Grade Stretch Films">Hand Grade Stretch Films</a></li>
+                    <li><a class="product-link" data-name="Jumbo Stretch Film Rolls">Jumbo Stretch Film Rolls</a></li>
+                </ul>
+            </div>
+            <div class="mega-menu-category">
+                <h3>Accessory packaging</h3>
+                <ul>
+                    <li><a class="product-link" data-name="Round Clip">Round Clip</a></li>
+                    <li><a class="product-link" data-name="Open Clip">Open Clip</a></li>
+                    <li><a class="product-link" data-name="Box Corners">Box Corners</a></li>
+                    <li><a class="product-link" data-name="Edge Protector">Edge Protector</a></li>
+                    <li><a class="product-link" data-name="Anti-slip Sheets">Anti-slip Sheets</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Overlay -->
+    <div class="product-overlay" id="product-overlay">
+        <div class="product-overlay-close" id="product-overlay-close">&times;</div>
+        <div class="product-detail-container">
+            <div class="product-detail-image">
+                <img id="detail-img" src="" alt="Product Image">
+            </div>
+            <div class="product-detail-info">
+                <h2 id="detail-title">Product Name</h2>
+                <span class="price-tag">Premium Quality</span>
+                <p id="detail-desc1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p id="detail-desc2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <a href="#contact" class="btn-quote" style="margin-top: 30px; display: inline-flex;" onclick="document.getElementById('product-overlay').classList.remove('active'); document.getElementById('contact-product').value = document.getElementById('detail-title').innerText;">
+                    <span class="text-pill">Inquire Now</span>
+                    <span class="arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <section id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="top-text">Packaging Solutions Experts</span>
+            <h1>Hi, We’re <br><span>Bondex Packaging</span></h1>
+            <span class="sub-text">Delivering <br>Premium Tapes <br>& Packaging Solutions</span>
+            <a href="#contact" class="btn-quote">
+                <span class="text-pill">Get a Quote</span>
+                <span class="arrow">→</span>
+            </a>
+        </div>
+    </section>
+
+    <section id="home-intro" style="padding-top: 40px; padding-bottom: 40px;">
+        <div class="about-grid">
+            <div class="about-placeholder" style="background-image: url('https://picsum.photos/seed/packaging-intro/800/600'); background-size: cover; border: none;">
+            </div>
+            <div class="about-text">
+                <h3>Reliable Packaging Solutions for Modern Businesses</h3>
+                <p><strong>Quality Products. Competitive Pricing. Trusted Supply.</strong></p>
+                <p>Bondex Packaging is committed to delivering dependable and cost-effective packaging solutions for businesses across India. As a growing supplier in the packaging industry, we focus on providing high-quality products sourced from trusted manufacturers to meet diverse business needs.</p>
+                <p>Our range includes BOPP tapes, self-adhesive tapes, and essential packaging materials designed for strength, durability, and performance. Whether you are managing daily shipments or building your brand with customized packaging, we ensure consistent quality and timely supply.</p>
+                <p>With a strong focus on competitive wholesale pricing, responsive service, and customer satisfaction, Bondex Packaging supports businesses in streamlining their packaging operations with confidence and ease.</p>
+                <p>Explore our products or contact us today to find the right packaging solution for your business.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" style="background-color: #fcfcfc;">
+        <div class="features-grid">
+            <div class="feature-box">
+                <div class="feature-icon-wrapper">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>Durability & High-Strength Packaging</h3>
+                <p>Our packaging solutions are engineered for maximum durability and performance. Bondex Packaging offers high-quality adhesive tapes and materials that resist tearing, punctures, and moisture—ensuring safe, secure packaging during storage, shipping, and multi-transit handling.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon-wrapper">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>
+                </div>
+                <h3>Cost-Effective Packaging Solutions</h3>
+                <p>At Bondex Packaging, we deliver affordable packaging materials without compromising on quality. From strapping rolls to industrial adhesive tapes, our products provide reliable performance at competitive prices—helping businesses reduce overall packaging costs efficiently.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon-wrapper">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <h3>Custom Packaging Solutions for Your Brand</h3>
+                <p>We specialize in customized packaging solutions tailored to your business needs. Bondex Packaging helps enhance your brand identity with flexible designs, branded tapes, and personalized packaging materials that improve product presentation and customer experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="about-grid">
+            <div class="about-placeholder" style="aspect-ratio: 1/1; border: none; overflow: hidden;">
+                <img src="https://picsum.photos/seed/bondex-about/800/800" alt="Bondex Story" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="about-text">
+                <div class="section-title" style="text-align: left; margin-bottom: 30px;">
+                    <h2>Our Story: Trusted Packaging Solutions Driven by Innovation</h2>
+                </div>
+                <p>At Bondex Packaging, we are committed to delivering innovative and high-performance packaging solutions for modern businesses. As a leading manufacturer and supplier of adhesive tapes, PP straps, PET straps, and stretch films, we continuously evolve our product range to meet the growing demands of the industrial packaging industry. Our focus on quality, durability, and advanced packaging materials keeps us ahead in a competitive market.</p>
+                <p>What began as a dedicated self-adhesive tape manufacturer has grown into a trusted name in industrial packaging solutions. Bondex Packaging has expanded its portfolio to include PP strapping, PET strapping, and stretch films, offering complete packaging materials under one roof. Our strong commitment to quality assurance and innovation has established us as a reliable packaging partner for businesses across multiple industries.</p>
+                <p>As we continue to expand, our mission remains clear—to provide cost-effective, durable, and customized packaging solutions that enhance operational efficiency and product safety. At Bondex Packaging, we combine expertise, technology, and customer-focused service to deliver packaging solutions that exceed expectations.</p>
+                <div class="vision-box">
+                    <h4>Our Vision</h4>
+                    <p>"To become a leading and trusted name in the packaging industry by delivering innovative, high-quality adhesive tapes and reliable packaging solutions."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="section-title">
+            <h2>Our Products</h2>
+            <p>High-Quality Industrial Packaging Materials for Every Business Need</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card" data-category="tapes">
+                <div class="product-img-box">
+                    <img src="https://picsum.photos/seed/tapes-main/600/600" alt="Self-Adhesive Tapes">
+                </div>
+                <h3>Self-Adhesive Tapes</h3>
+                <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 15px;">Premium adhesive tapes designed for strong bonding and long-lasting performance.</p>
+                <ul class="product-features">
+                    <li>High tensile strength for secure sealing</li>
+                    <li>Superior adhesion for reliable packaging</li>
+                    <li>Weather-resistant for all conditions</li>
+                </ul>
+                <div class="btn-get-started">Explore more</div>
+            </div>
+            <div class="product-card" data-category="pp-straps">
+                <div class="product-img-box">
+                    <img src="https://picsum.photos/seed/pp-straps-main/600/600" alt="PP Strapping Rolls">
+                </div>
+                <h3>PP Strapping Rolls</h3>
+                <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 15px;">Flexible and cost-effective solutions for light to medium-duty packaging.</p>
+                <ul class="product-features">
+                    <li>Lightweight and easy to handle</li>
+                    <li>Ideal for cost-effective bundling</li>
+                    <li>Available in multiple sizes</li>
+                </ul>
+                <div class="btn-get-started">Explore more</div>
+            </div>
+            <div class="product-card" data-category="pet-straps">
+                <div class="product-img-box">
+                    <img src="https://picsum.photos/seed/pet-straps-main/600/600" alt="PET Straps">
+                </div>
+                <h3>PET Straps (Polyester)</h3>
+                <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 15px;">Heavy-duty industrial strapping for maximum load security.</p>
+                <ul class="product-features">
+                    <li>High strength and durability</li>
+                    <li>Excellent impact and tension resistance</li>
+                    <li>Rust-free alternative to steel</li>
+                </ul>
+                <div class="btn-get-started">Explore more</div>
+            </div>
+            <div class="product-card" data-category="stretch-films">
+                <div class="product-img-box">
+                    <img src="https://picsum.photos/seed/stretch-films-main/600/600" alt="Stretch Films">
+                </div>
+                <h3>Stretch Films</h3>
+                <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 15px;">Advanced packaging films for secure wrapping and product protection.</p>
+                <ul class="product-features">
+                    <li>High puncture resistance for safe transit</li>
+                    <li>Strong cling and superior transparency</li>
+                    <li>Protects goods from dust and moisture</li>
+                </ul>
+                <div class="btn-get-started">Explore more</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Overlay -->
+    <div class="category-overlay" id="category-overlay">
+        <div class="product-overlay-close" id="category-overlay-close">&times;</div>
+        <div class="section-title">
+            <h2 id="category-title">All Products</h2>
+            <p>Explore our full range of high-quality packaging materials</p>
+        </div>
+        <div class="category-grid" id="category-grid">
+            <!-- Items populated by JS -->
+        </div>
+    </div>
+
+    <section id="industries">
+        <div class="section-title">
+            <h2>Industries We Serve</h2>
+            <p>Complete Packaging Solutions for Diverse Industries</p>
+        </div>
+        <div class="industries-grid">
+            <div class="industry-item">
+                <h3>E-commerce & Warehousing</h3>
+                <p>High-quality adhesive tapes and packaging materials for secure, high-volume shipping and efficient inventory management. Bondex Packaging ensures safe handling and protection of products in fast-moving supply chains.</p>
+            </div>
+            <div class="industry-item">
+                <h3>Logistics & Transportation</h3>
+                <p>Durable PP straps, PET straps, and stretch films designed for heavy-duty packaging and long-distance cargo protection. Our solutions ensure stability and safety during transit and handling.</p>
+            </div>
+            <div class="industry-item">
+                <h3>Manufacturing & Industrial</h3>
+                <p>Reliable industrial packaging solutions for end-of-line packaging, including strapping, sealing, and wrapping of goods. Bondex Packaging supports efficient operations with strong and durable materials.</p>
+            </div>
+            <div class="industry-item">
+                <h3>Retail & Wholesale Distribution</h3>
+                <p>Professional packaging tapes and bundling solutions for secure packaging and display-ready products. Enhance product presentation while ensuring safety during storage and distribution.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <p>Going beyond products to provide complete support</p>
+        </div>
+        <div class="services-list">
+            <div class="service-item">
+                <div class="service-icon">📦</div>
+                <h3>Bulk Supply</h3>
+                <p>Consistent inventory for large-scale requirements.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">⚙️</div>
+                <h3>Custom Solutions</h3>
+                <p>Packaging designed for your specific product needs.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">💡</div>
+                <h3>Consultation</h3>
+                <p>Expert advice on optimizing your packaging process.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">🚚</div>
+                <h3>Reliable Delivery</h3>
+                <p>Timely support to keep your operations running.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews">
+        <div class="section-title">
+            <h2>Customer Reviews</h2>
+            <p>What our partners say about us</p>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <p>"Reliable quality and consistent supply. Bondex has been our go-to for all strapping needs."</p>
+                <p class="review-author">- Rajesh Mehta, Logistics Manager</p>
+            </div>
+            <div class="review-card">
+                <p>"The stretch films are of superior quality. We've seen a significant reduction in transit damage."</p>
+                <p class="review-author">- Amit Shah, E-commerce Founder</p>
+            </div>
+            <div class="review-card">
+                <p>"Professional team and very competitive pricing. Their custom solutions helped us save 15%."</p>
+                <p class="review-author">- Vikram Singh, Plant Head</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="https://forms.gle/VA4jDFys7wurW7RY8" target="_blank" class="btn btn-outline">Submit a Review</a>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>Get in touch for a personalized quote</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-content">
+                        <strong>Location</strong>
+                        <p>FF-103, SHYAM TRADE CENTER, Kathwada-Singarva Rd, opp. AMBUJA CEMENT GODOWN, Ahmedabad, Gujarat 382430</p>
+                        <a href="https://maps.app.goo.gl/QLAcA9x2wErodRkM6" target="_blank" class="btn-maps">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Go on Maps
+                        </a>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">📞</div>
+                    <div class="info-content">
+                        <strong>Phone</strong>
+                        <p>+91 9023971274</p>
+                        <a href="https://wa.me/919023971274" target="_blank" class="whatsapp-direct">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            Direct Message
+                        </a>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">✉️</div>
+                    <div class="info-content">
+                        <strong>Email</strong>
+                        <p>info@bondexpackaging.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-container">
+                <form class="contact-form" onsubmit="handleContactSubmit(event)">
+                    <div class="form-group">
+                        <label for="contact-name">Name</label>
+                        <input type="text" id="contact-name" placeholder="Your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email</label>
+                        <input type="email" id="contact-email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-phone">Phone Number</label>
+                        <input type="tel" id="contact-phone" placeholder="+91 00000 00000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-product">Product Name</label>
+                        <input type="text" id="contact-product" placeholder="Enter product name">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="contact-message">Message / Special Requests</label>
+                        <textarea id="contact-message" placeholder="Anything else we should know?"></textarea>
+                    </div>
+                    <div class="btn-submit-container">
+                        <button type="submit" class="btn-submit">
+                            Reserve Your Spot
+                            <div class="arrow-circle">↗</div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <h2>BONDEX<span>PACKAGING</span></h2>
+                <p>Quality Packaging. Reliable Solutions.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#services">Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <ul>
+                    <li>Ahmedabad, Gujarat</li>
+                    <li>+91 9023971274</li>
+                    <li>info@bondexpackaging.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2024 Bondex Packaging. All Rights Reserved.</div>
+    </footer>
+
+    <script>
+        // Loading Screen Logic
+        window.addEventListener('DOMContentLoaded', () => {
+            const loaderAudio = document.getElementById('loader-audio');
+            
+            const startAudio = () => {
+                if (loaderAudio) {
+                    loaderAudio.play().catch(error => {
+                        console.log("Autoplay prevented. Audio will play after user interaction.");
+                    });
+                }
+            };
+
+            // Try playing immediately
+            startAudio();
+
+            // Fallback: Play on first user interaction if autoplay was blocked
+            const playOnInteraction = () => {
+                startAudio();
+                window.removeEventListener('click', playOnInteraction);
+                window.removeEventListener('touchstart', playOnInteraction);
+            };
+            window.addEventListener('click', playOnInteraction);
+            window.addEventListener('touchstart', playOnInteraction);
+            
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                if (loader) {
+                    loader.style.opacity = '0';
+                    loader.style.visibility = 'hidden';
+                    document.body.classList.remove('loading');
+                    if (loaderAudio) {
+                        loaderAudio.pause();
+                    }
+                    // Clean up listeners
+                    window.removeEventListener('click', playOnInteraction);
+                    window.removeEventListener('touchstart', playOnInteraction);
+                }
+            }, 3000);
+        });
+
+        // Hero Background Slider Logic
+        // Paste your 4 Desktop Image URLs here:
+        const desktopImages = [
+            'bg2.jpg',
+            'bg3.jpg',
+            'bg4.jpg',
+            'bg5.jpg'
+        ];
+        
+        // Paste your 4 Phone Image URLs here:
+        const mobileImages = [
+            'hbg.jpg',
+            'pbg2.jpg',
+            'pbg3.jpg',
+            'pbg4.jpg'
+        ];
+        
+        let currentImgIndex = 1; // Start from 1 since 0 is already in CSS
+        const homeSection = document.getElementById('home');
+        
+        // Preload all images immediately to prevent black flashes
+        [...desktopImages, ...mobileImages].forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+        
+        function updateBackground() {
+            const isMobile = window.innerWidth <= 768;
+            const images = isMobile ? mobileImages : desktopImages;
+            
+            // Set current image
+            homeSection.style.backgroundImage = `url('${images[currentImgIndex]}')`;
+            
+            // Increment index for next time
+            currentImgIndex = (currentImgIndex + 1) % images.length;
+        }
+        
+        // Start the loop
+        setInterval(updateBackground, 5000);
+
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.style.top = '10px';
+            } else {
+                nav.style.top = '20px';
+            }
+        });
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-links a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').slice(1) === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Mega Menu Logic
+        const megaMenu = document.getElementById('mega-menu');
+        const megaMenuTrigger = document.getElementById('products-trigger');
+        const megaMenuClose = document.getElementById('mega-menu-close');
+
+        megaMenuTrigger.addEventListener('click', () => {
+            megaMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        megaMenuTrigger.addEventListener('mouseenter', () => {
+            megaMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        megaMenuClose.addEventListener('click', () => {
+            megaMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Product Detail Overlay Logic
+        const productOverlay = document.getElementById('product-overlay');
+        const productOverlayClose = document.getElementById('product-overlay-close');
+        const detailTitle = document.getElementById('detail-title');
+        const detailImg = document.getElementById('detail-img');
+        const detailDesc1 = document.getElementById('detail-desc1');
+        const detailDesc2 = document.getElementById('detail-desc2');
+
+        // Individual Product Data - You can change URLs and Text here
+        const productData = {
+            "BOPP Logo Tapes": {
+                img: "https://picsum.photos/seed/bopp-logo/800/800",
+                desc1: "Custom printed BOPP logo tapes are perfect for brand visibility and security. These tapes feature high-quality printing of your company logo or message, ensuring that your packages are easily identifiable.",
+                desc2: "Our logo tapes offer excellent adhesion and durability, making them ideal for various industrial and commercial packaging needs. They provide a professional look to your shipments while acting as a tamper-evident seal."
+            },
+            "BOPP Decoration Tape": {
+                img: "https://picsum.photos/seed/bopp-deco/800/800",
+                desc1: "BOPP decoration tapes are designed to add aesthetic value to your packaging. Available in various patterns and designs, these tapes are perfect for gift wrapping, retail packaging, and creative projects.",
+                desc2: "Despite their decorative nature, these tapes maintain high tensile strength and strong adhesive properties, ensuring that your packages remain secure while looking attractive."
+            },
+            "BOPP Warning Tape": {
+                img: "https://picsum.photos/seed/bopp-warning/800/800",
+                desc1: "Warning tapes are essential for highlighting fragile or sensitive shipments. Printed with clear instructions like 'Fragile', 'Handle with Care', or 'Do Not Drop', they help reduce the risk of damage during transit.",
+                desc2: "Made from high-quality BOPP film, these tapes are highly visible and durable. They serve as a critical communication tool for logistics personnel and customers alike."
+            },
+            "BOPP Coloured Tapes": {
+                img: "https://picsum.photos/seed/bopp-color/800/800",
+                desc1: "Coloured BOPP tapes are ideal for color-coding shipments, inventory management, and creative packaging. We offer a wide range of vibrant colors to suit your specific organizational needs.",
+                desc2: "These tapes provide the same reliable performance as our standard tapes, with excellent shear strength and long-lasting adhesion on various surfaces."
+            },
+            "BOPP Plain Tapes": {
+                img: "https://picsum.photos/seed/bopp-plain/800/800",
+                desc1: "Our plain BOPP tapes are the workhorse of the packaging industry. Available in clear and brown finishes, they provide a reliable and cost-effective solution for everyday sealing tasks.",
+                desc2: "Engineered for high-speed automated applications as well as manual use, these tapes offer consistent performance and superior clarity for a clean packaging finish."
+            },
+            "BOPP Jumbo Tape Rolls": {
+                img: "https://picsum.photos/seed/bopp-jumbo/800/800",
+                desc1: "Jumbo rolls are designed for high-volume industrial users who require continuous operation. These large-format rolls minimize downtime by reducing the frequency of roll changes on automatic machines.",
+                desc2: "We provide jumbo rolls in various widths and lengths, ensuring compatibility with most industrial tape dispensing systems while maintaining consistent quality throughout the roll."
+            },
+            "Printed PP Straps": {
+                img: "https://picsum.photos/seed/pp-strap-print/800/800",
+                desc1: "Printed PP straps combine secure bundling with branding opportunities. Custom printing allows you to display your company name, logo, or handling instructions directly on the strapping material.",
+                desc2: "These straps are made from high-quality polypropylene, offering excellent break strength and minimal elongation for secure load containment."
+            },
+            "Coloured PP Straps": {
+                img: "https://picsum.photos/seed/pp-strap-color/800/800",
+                desc1: "Coloured PP straps are perfect for identifying different product lines or batches. They help streamline warehouse operations and improve inventory tracking through visual cues.",
+                desc2: "Our colored straps maintain their integrity under tension and are resistant to environmental factors, ensuring your bundles stay tight and secure."
+            },
+            "Machine Grade PP Straps": {
+                img: "https://picsum.photos/seed/pp-strap-machine/800/800",
+                desc1: "Designed for use with fully automatic and semi-automatic strapping machines, these straps feature consistent width and thickness to prevent jamming and ensure smooth operation.",
+                desc2: "They offer high reliability for high-speed packaging lines, providing consistent tension and secure heat seals for industrial-scale bundling."
+            },
+            "Hand Grade PP Straps": {
+                img: "https://picsum.photos/seed/pp-strap-hand/800/800",
+                desc1: "Hand grade PP straps are optimized for manual application using hand tools or battery-powered tensioners. They are flexible and easy to handle, making them ideal for smaller operations.",
+                desc2: "These straps provide a versatile solution for bundling boxes, securing cartons, and reinforcing packages in various warehouse environments."
+            },
+            "Printed PET Straps": {
+                img: "https://picsum.photos/seed/pet-strap-print/800/800",
+                desc1: "Printed PET straps offer the strength of steel with the benefits of polyester. Custom printing provides a secure and professional way to brand your heavy-duty shipments.",
+                desc2: "PET strapping is known for its high tension retention and impact resistance, making it suitable for the most demanding industrial applications."
+            },
+            "Coloured PET Straps": {
+                img: "https://picsum.photos/seed/pet-strap-color/800/800",
+                desc1: "Coloured PET straps provide heavy-duty bundling with the added benefit of color-coding. They are ideal for heavy industrial loads that require both strength and organization.",
+                desc2: "These straps are resistant to UV rays and moisture, ensuring that they maintain their strength and color even during outdoor storage or long-distance transit."
+            },
+            "Machine Grade PET Straps": {
+                img: "https://picsum.photos/seed/pet-strap-machine/800/800",
+                desc1: "Our machine grade PET straps are engineered for high-performance automatic strapping heads. They feature precise dimensions and superior surface finish for maximum efficiency.",
+                desc2: "They provide a safer and more cost-effective alternative to steel strapping, offering excellent shock absorption and load stability for heavy pallets."
+            },
+            "Hand Grade PET Straps": {
+                img: "https://picsum.photos/seed/pet-strap-hand/800/800",
+                desc1: "Hand grade PET straps are designed for manual use with friction-weld or manual tensioning tools. They offer high strength for securing heavy loads without the need for complex machinery.",
+                desc2: "These straps are easy to use and provide a secure, long-lasting hold for various industrial products, from timber to metal components."
+            },
+            "Cotton Baling PET Straps": {
+                img: "https://picsum.photos/seed/pet-strap-cotton/800/800",
+                desc1: "Specifically designed for the cotton industry, these PET straps offer the high strength and low elongation required to secure compressed cotton bales safely.",
+                desc2: "They are engineered to withstand the high expansion forces of cotton bales, ensuring that the bales remain compact and easy to transport."
+            },
+            "Jumbo PET Strap Rolls": {
+                img: "https://picsum.photos/seed/pet-strap-jumbo/800/800",
+                desc1: "Jumbo PET rolls are ideal for high-volume strapping operations. These large rolls reduce the frequency of roll changes, increasing productivity on the packaging floor.",
+                desc2: "We offer jumbo rolls in various specifications to meet the needs of large-scale industrial users who require a continuous supply of high-strength strapping."
+            },
+            "Printed Stretch Films": {
+                img: "https://picsum.photos/seed/stretch-print/800/800",
+                desc1: "Printed stretch films allow you to brand your palletized loads while providing excellent protection. Custom printing can include logos, QR codes, or security warnings.",
+                desc2: "Our printed films maintain high cling and puncture resistance, ensuring that your pallets are securely wrapped and easily identifiable."
+            },
+            "Coloured Stretch Films": {
+                img: "https://picsum.photos/seed/stretch-color/800/800",
+                desc1: "Coloured stretch films are perfect for concealing valuable shipments or color-coding pallets for different destinations or product types.",
+                desc2: "These opaque films provide privacy and security, while their high stretchability ensures a tight and secure wrap for various load shapes."
+            },
+            "Machine Grade Stretch Films": {
+                img: "https://picsum.photos/seed/stretch-machine/800/800",
+                desc1: "Designed for high-speed automatic stretch wrapping machines, these films offer high pre-stretch capabilities and superior load containment.",
+                desc2: "They provide consistent performance and high yield, helping businesses reduce film consumption while ensuring maximum pallet stability."
+            },
+            "Hand Grade Stretch Films": {
+                img: "https://picsum.photos/seed/stretch-hand/800/800",
+                desc1: "Hand grade stretch films are lightweight and easy to apply manually. They are ideal for smaller operations or for wrapping irregular loads that cannot be machine-wrapped.",
+                desc2: "Our hand films feature high clarity and excellent cling, providing a reliable and versatile solution for everyday pallet wrapping needs."
+            },
+            "Jumbo Stretch Film Rolls": {
+                img: "https://picsum.photos/seed/stretch-jumbo/800/800",
+                desc1: "Jumbo stretch film rolls are designed for converting or for high-volume industrial users. These large rolls offer a cost-effective way to manage large-scale wrapping requirements.",
+                desc2: "We provide jumbo rolls in various gauges and widths, ensuring that you have the right material for your specific industrial application."
+            },
+            "Round Clip": {
+                img: "https://picsum.photos/seed/round-clip/800/800",
+                desc1: "Round clips are essential accessories for securing strapping ends. They provide a strong and reliable joint, ensuring that your bundles stay tight during handling.",
+                desc2: "Made from high-quality materials, these clips are designed for ease of use and maximum hold, making them a staple in any strapping operation."
+            },
+            "Open Clip": {
+                img: "https://picsum.photos/seed/open-clip/800/800",
+                desc1: "Open clips allow for quick and easy application on strapping. They are designed to be placed over the strap after tensioning, providing a secure and efficient seal.",
+                desc2: "Our open clips are compatible with various strapping tools and provide a reliable joint that resists slipping and breaking."
+            },
+            "Box Corners": {
+                img: "https://picsum.photos/seed/box-corners/800/800",
+                desc1: "Box corners protect the edges of your cartons from damage caused by tight strapping. They distribute the tension evenly, preventing the strap from cutting into the box.",
+                desc2: "These durable plastic corners are easy to apply and significantly improve the overall integrity and appearance of your packaged goods."
+            },
+            "Edge Protector": {
+                img: "https://picsum.photos/seed/edge-protector/800/800",
+                desc1: "Edge protectors provide heavy-duty protection for palletized loads. They reinforce the corners of the pallet, allowing for higher strapping tension and better stackability.",
+                desc2: "Made from recycled materials, our edge protectors are both environmentally friendly and highly effective at preventing damage to your products during transit."
+            },
+            "Anti-slip Sheets": {
+                img: "https://picsum.photos/seed/anti-slip/800/800",
+                desc1: "Anti-slip sheets are placed between layers of products on a pallet to prevent sliding and shifting. They increase the stability of the load, reducing the risk of damage.",
+                desc2: "These sheets are a cost-effective way to improve pallet safety and can often reduce the amount of stretch film required to secure a load."
+            }
+        };
+
+        document.querySelectorAll('.product-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const productName = link.getAttribute('data-name');
+                const data = productData[productName];
+                
+                if (data) {
+                    detailTitle.innerText = productName;
+                    detailImg.src = data.img;
+                    detailDesc1.innerText = data.desc1;
+                    detailDesc2.innerText = data.desc2;
+                    
+                    megaMenu.classList.remove('active');
+                    productOverlay.classList.add('active');
+                }
+            });
+        });
+
+        productOverlayClose.addEventListener('click', () => {
+            productOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Product Card Expansion and Category Overlay Logic
+        const categoryOverlay = document.getElementById('category-overlay');
+        const categoryOverlayClose = document.getElementById('category-overlay-close');
+        const categoryTitle = document.getElementById('category-title');
+        const categoryGrid = document.getElementById('category-grid');
+
+        const categories = {
+            "tapes": {
+                title: "Self-Adhesive Tapes",
+                products: ["BOPP Logo Tapes", "BOPP Decoration Tape", "BOPP Warning Tape", "BOPP Coloured Tapes", "BOPP Plain Tapes", "BOPP Jumbo Tape Rolls"]
+            },
+            "pp-straps": {
+                title: "PP Strapping Rolls",
+                products: ["Printed PP Straps", "Coloured PP Straps", "Machine Grade PP Straps", "Hand Grade PP Straps"]
+            },
+            "pet-straps": {
+                title: "PET Straps (Polyester)",
+                products: ["Printed PET Straps", "Coloured PET Straps", "Machine Grade PET Straps", "Hand Grade PET Straps", "Cotton Baling PET Straps", "Jumbo PET Strap Rolls"]
+            },
+            "stretch-films": {
+                title: "Stretch Films",
+                products: ["Printed Stretch Films", "Coloured Stretch Films", "Machine Grade Stretch Films", "Hand Grade Stretch Films", "Jumbo Stretch Film Rolls"]
+            }
+        };
+
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                // If clicking the button, open overlay
+                if (e.target.classList.contains('btn-get-started')) {
+                    const catKey = card.getAttribute('data-category');
+                    openCategoryOverlay(catKey);
+                    return;
+                }
+                
+                // Otherwise, toggle expansion
+                const isExpanded = card.classList.contains('expanded');
+                document.querySelectorAll('.product-card').forEach(c => c.classList.remove('expanded'));
+                if (!isExpanded) {
+                    card.classList.add('expanded');
+                }
+            });
+        });
+
+        function openCategoryOverlay(key) {
+            const cat = categories[key];
+            if (!cat) return;
+
+            categoryTitle.innerText = cat.title;
+            categoryGrid.innerHTML = '';
+
+            cat.products.forEach(prodName => {
+                const item = document.createElement('div');
+                item.className = 'category-item';
+                item.innerHTML = `
+                    <img src="${productData[prodName]?.img || 'https://picsum.photos/seed/'+prodName+'/400/400'}" alt="${prodName}">
+                    <h4>${prodName}</h4>
+                `;
+                item.onclick = () => {
+                    // Reuse existing product overlay logic
+                    const data = productData[prodName];
+                    if (data) {
+                        detailTitle.innerText = prodName;
+                        detailImg.src = data.img;
+                        detailDesc1.innerText = data.desc1;
+                        detailDesc2.innerText = data.desc2;
+                        categoryOverlay.classList.remove('active');
+                        productOverlay.classList.add('active');
+                    }
+                };
+                categoryGrid.appendChild(item);
+            });
+
+            categoryOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        categoryOverlayClose.addEventListener('click', () => {
+            categoryOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close on ESC key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                megaMenu.classList.remove('active');
+                productOverlay.classList.remove('active');
+                categoryOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Google Sheets Form Submission Logic
+        async function handleContactSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = "Sending...";
+            submitBtn.disabled = true;
+
+            const data = {
+                name: document.getElementById('contact-name').value,
+                email: document.getElementById('contact-email').value,
+                phone: document.getElementById('contact-phone').value,
+                product: document.getElementById('contact-product').value,
+                message: document.getElementById('contact-message').value
+            };
+
+            try {
+                // REPLACE THE URL BELOW WITH YOUR DEPLOYED APPS SCRIPT URL
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbzSxsvkQQNz2XN8HAg72mgE9ZbFgUsUkN5vuVVyhZdlBs88SXAMf2wZ0mVgfeGirzdmMQ/exec';
+                
+                await fetch(scriptURL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: JSON.stringify(data)
+                });
+                
+                alert('Thank you! Your inquiry has been submitted successfully. We will contact you soon.');
+                form.reset();
+            } catch (error) {
+                console.error('Error!', error.message);
+                alert('Something went wrong. Please try again or contact us via WhatsApp.');
+            } finally {
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
